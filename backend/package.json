@@ -1,0 +1,14 @@
+{
+  "name": "truestate-backend",
+  "version": "1.0.0",
+  "description": "Backend for TruEstate Retail Sales Management System",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": ["truestate", "backend", "retail"],
+  "author": "",
+  "license": "ISC"
+}
