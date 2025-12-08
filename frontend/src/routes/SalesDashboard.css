@@ -1,16 +1,18 @@
 .dashboard-layout {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #F9FAFB;
+  overflow: hidden;
 }
 
 .sales-dashboard {
   flex: 1;
   margin-left: 256px;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #F9FAFB;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .dashboard-header {
@@ -20,9 +22,7 @@
   padding: 20px 32px;
   background-color: #fff;
   border-bottom: 1px solid #E5E7EB;
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  flex-shrink: 0;
 }
 
 .dashboard-title {
@@ -40,9 +40,7 @@
   background-color: #fff;
   border-bottom: 1px solid #E5E7EB;
   gap: 12px;
-  position: sticky;
-  top: 68px;
-  z-index: 50;
+  flex-shrink: 0;
 }
 
 .filters-left {
@@ -112,6 +110,7 @@
   padding: 24px 32px;
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .loading-state,
