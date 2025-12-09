@@ -25,6 +25,11 @@ function SummaryCards({ data }) {
         const discountAmount = (isNaN(itemTotal) || isNaN(itemFinal)) ? 0 : (itemTotal - itemFinal);
         return sum + Math.max(0, discountAmount);
       }, 0);
+  
+  // Total record count - use overall metrics count if available
+  const recordCount = hasOverallMetrics 
+    ? data.overallMetrics.totalRecords || 0
+    : data?.totalItems || 0;
 
   return (
     <div className="summary-cards">
@@ -36,7 +41,7 @@ function SummaryCards({ data }) {
             <path d="M8 7.5V11.5M8 5.5H8.005" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
         </div>
-        <div className="summary-value">{itemCount}</div>
+        <div className="summary-value">{totalUnits.toLocaleString('en-IN')}</div>
       </div>
 
       <div className="summary-card">
@@ -48,7 +53,7 @@ function SummaryCards({ data }) {
           </svg>
         </div>
         <div className="summary-value">
-          ₹{totalAmount.toLocaleString('en-IN')} <span className="summary-count">({itemCount} SRs)</span>
+          ₹{totalAmount.toLocaleString('en-IN')} <span className="summary-count">({recordCount.toLocaleString('en-IN')} SRs)</span>
         </div>
       </div>
 
@@ -61,7 +66,7 @@ function SummaryCards({ data }) {
           </svg>
         </div>
         <div className="summary-value">
-          ₹{totalDiscount.toLocaleString('en-IN')} <span className="summary-count">({itemCount} SRs)</span>
+          ₹{totalDiscount.toLocaleString('en-IN')} <span className="summary-count">({recordCount.toLocaleString('en-IN')} SRs)</span>
         </div>
       </div>
     </div>
