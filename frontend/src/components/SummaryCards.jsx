@@ -2,18 +2,25 @@ import React from 'react';
 import './SummaryCards.css';
 
 function SummaryCards({ data }) {
+  // Safe data extraction with fallbacks
+  const items = data?.items || [];
   const totalUnits = data?.totalItems || 0;
-  const totalAmount = data?.items?.reduce((sum, item) => sum + (item.totalAmount || item.finalAmount || 0), 0) || 0;
+  
+  // Calculate total amount with safe number handling
+  const totalAmount = items.reduce((sum, item) => {
+    const amount = Number(item?.totalAmount || item?.finalAmount || 0);
+    return sum + (isNaN(amount) ? 0 : amount);
+  }, 0);
   
   // Calculate total discount: totalAmount - finalAmount for each item
-  const totalDiscount = data?.items?.reduce((sum, item) => {
-    const itemTotal = item.totalAmount || 0;
-    const itemFinal = item.finalAmount || 0;
-    const discountAmount = itemTotal - itemFinal;
-    return sum + discountAmount;
-  }, 0) || 0;
+  const totalDiscount = items.reduce((sum, item) => {
+    const itemTotal = Number(item?.totalAmount || 0);
+    const itemFinal = Number(item?.finalAmount || 0);
+    const discountAmount = (isNaN(itemTotal) || isNaN(itemFinal)) ? 0 : (itemTotal - itemFinal);
+    return sum + Math.max(0, discountAmount); // Ensure non-negative
+  }, 0);
   
-  const itemCount = data?.items?.length || 0;
+  const itemCount = items.length;
 
   return (
     <div className="summary-cards">

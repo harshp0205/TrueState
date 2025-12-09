@@ -235,19 +235,29 @@ function SalesDashboard() {
           <div className="loading-state">Loading transactions...</div>
         )}
 
-        {/* Error State */}
-        {error && (
-          <div className="error-state">Error: {error}</div>
-        )}
-
-        {/* Invalid Range Warning */}
-        {!loading && !error && data?.invalidRange && (
-          <div className="warning-state">
-            Invalid age range, please adjust filters.
-          </div>
-        )}
-
-        {/* Content: Summary Cards + Table + Pagination */}
+          {/* Error State */}
+          {error && (
+            <div className="error-state">
+              <strong>Error loading data:</strong> {error}
+              <button 
+                onClick={() => window.location.reload()} 
+                style={{ marginTop: '10px', padding: '8px 16px', cursor: 'pointer' }}
+              >
+                Retry
+              </button>
+            </div>
+          )}          {/* Invalid Range Warning */}
+          {!loading && !error && data?.invalidRange && (
+            <div className="warning-state">
+              ⚠️ Invalid filter combination detected. Please adjust your age range filter.
+              <button 
+                onClick={() => setAgeRange([null, null])} 
+                style={{ marginLeft: '10px', padding: '4px 12px', cursor: 'pointer' }}
+              >
+                Clear Age Filter
+              </button>
+            </div>
+          )}        {/* Content: Summary Cards + Table + Pagination */}
         {!loading && !error && !data?.invalidRange && (
           <>
             {/* Summary Cards */}

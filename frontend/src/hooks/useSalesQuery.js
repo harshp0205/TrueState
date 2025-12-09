@@ -78,7 +78,19 @@ export function useSalesQuery({
       } catch (err) {
         // Only set error if request wasn't cancelled
         if (!abortControllerRef.current.signal.aborted) {
-          setError(err.message || 'Failed to fetch sales data');
+          // Handle different error types
+          let errorMessage = 'Failed to load data';
+          if (err.response) {
+            // Server responded with error
+            errorMessage = err.response.data?.message || `Server error: ${err.response.status}`;
+          } else if (err.request) {
+            // Request made but no response
+            errorMessage = 'No response from server. Please check your connection.';
+          } else {
+            // Error in request setup
+            errorMessage = err.message || 'An unexpected error occurred';
+          }
+          setError(errorMessage);
           console.error('Error loading sales:', err);
         }
       } finally {
