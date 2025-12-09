@@ -1,9 +1,9 @@
 services:
   - type: web
     name: truestate-backend
-    env: node
-    region: oregon
+    runtime: node
     plan: free
+    rootDir: backend
     buildCommand: npm install
     startCommand: node src/index.js
     envVars:
@@ -11,5 +11,4 @@ services:
         value: production
       - key: MONGO_URI
         sync: false
-      - key: PORT
-        value: 10000
+    healthCheckPath: /health
