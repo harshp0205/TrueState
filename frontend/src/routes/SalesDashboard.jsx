@@ -107,10 +107,11 @@ function SalesDashboard() {
           </button>
 
           <FilterDropdown
-            label="Customer Region"
+            label="Region"
             options={regions}
             selected={selectedRegions}
             onChange={(values) => { setSelectedRegions(values); setPage(1); }}
+            isMulti={true}
           />
 
           <FilterDropdown
@@ -118,6 +119,7 @@ function SalesDashboard() {
             options={genders}
             selected={selectedGenders}
             onChange={(values) => { setSelectedGenders(values); setPage(1); }}
+            isMulti={true}
           />
 
           <FilterDropdown
@@ -148,6 +150,7 @@ function SalesDashboard() {
             options={categories}
             selected={selectedCategories}
             onChange={(values) => { setSelectedCategories(values); setPage(1); }}
+            isMulti={true}
           />
 
           <FilterDropdown
@@ -155,6 +158,7 @@ function SalesDashboard() {
             options={tags}
             selected={selectedTags}
             onChange={(values) => { setSelectedTags(values); setPage(1); }}
+            isMulti={true}
           />
 
           <FilterDropdown
@@ -162,6 +166,7 @@ function SalesDashboard() {
             options={paymentMethods}
             selected={selectedPaymentMethods}
             onChange={(values) => { setSelectedPaymentMethods(values); setPage(1); }}
+            isMulti={true}
           />
 
           <FilterDropdown

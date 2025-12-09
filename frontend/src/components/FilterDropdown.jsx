@@ -33,17 +33,31 @@ function FilterDropdown({ label, options, selected, onChange, isMulti = true }) 
     }
   };
 
-  const displayText = selected.length > 0
-    ? `${label} (${selected.length})`
-    : label;
+  // Display text shows selected items for better UX
+  const displayText = () => {
+    if (selected.length === 0) return label;
+    
+    if (isMulti) {
+      // For multi-select, show first item and count if more
+      if (selected.length === 1) {
+        return selected[0];
+      } else {
+        return `${selected[0]} +${selected.length - 1}`;
+      }
+    } else {
+      // For single-select, show the selected item
+      return selected[0];
+    }
+  };
 
   return (
     <div className="filter-dropdown" ref={dropdownRef}>
       <button
         className={`filter-dropdown-button ${selected.length > 0 ? 'active' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
+        title={selected.length > 1 ? selected.join(', ') : ''}
       >
-        <span>{displayText}</span>
+        <span>{displayText()}</span>
         <svg
           width="12"
           height="8"
