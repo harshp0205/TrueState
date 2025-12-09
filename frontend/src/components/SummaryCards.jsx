@@ -3,8 +3,16 @@ import './SummaryCards.css';
 
 function SummaryCards({ data }) {
   const totalUnits = data?.totalItems || 0;
-  const totalAmount = data?.items?.reduce((sum, item) => sum + (item.totalAmount || 0), 0) || 0;
-  const totalDiscount = data?.items?.reduce((sum, item) => sum + (item.discount || 0), 0) || 0;
+  const totalAmount = data?.items?.reduce((sum, item) => sum + (item.totalAmount || item.finalAmount || 0), 0) || 0;
+  
+  // Calculate total discount: totalAmount - finalAmount for each item
+  const totalDiscount = data?.items?.reduce((sum, item) => {
+    const itemTotal = item.totalAmount || 0;
+    const itemFinal = item.finalAmount || 0;
+    const discountAmount = itemTotal - itemFinal;
+    return sum + discountAmount;
+  }, 0) || 0;
+  
   const itemCount = data?.items?.length || 0;
 
   return (
