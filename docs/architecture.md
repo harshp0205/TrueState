@@ -34,4 +34,4 @@ TruEstate is a retail sales management system built as a monorepo with separate 
 
 - **Backend**: Node.js, Express
 - **Frontend**: React, Vite
-- **Database**: TBD
+- **Database**: MongoDb
