@@ -35,10 +35,10 @@ function FilterPanel({ filters, onFiltersChange }) {
   };
 
   // Filter options
-  const regions = ['North', 'South', 'East', 'West'];
+  const regions = ['Central', 'East', 'North', 'South', 'West'];
   const genders = ['Male', 'Female', 'Other'];
   const categories = ['Electronics', 'Beauty', 'Fashion', 'Home & Kitchen', 'Sports'];
-  const tags = ['premium', 'warranty', 'organic', 'skincare', 'trending', 'discount', 'sale'];
+  const tags = ['accessories', 'beauty', 'casual', 'cotton', 'fashion', 'formal', 'fragrance-free', 'gadgets', 'makeup', 'organic', 'portable', 'skincare', 'smart', 'unisex', 'wireless'];
   const paymentMethods = ['Credit Card', 'Debit Card', 'UPI', 'Cash', 'Net Banking'];
 
   return (

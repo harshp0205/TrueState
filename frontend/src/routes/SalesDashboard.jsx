@@ -25,10 +25,10 @@ function SalesDashboard() {
   const pageSize = 10;
 
   // Filter options
-  const regions = ['North', 'South', 'East', 'West'];
+  const regions = ['Central', 'East', 'North', 'South', 'West'];
   const genders = ['Male', 'Female'];
   const categories = ['Clothing', 'Electronics', 'Home & Garden', 'Beauty', 'Sports', 'Books'];
-  const tags = ['New Arrival', 'Best Seller', 'Limited Edition', 'On Sale'];
+  const tags = ['accessories', 'beauty', 'casual', 'cotton', 'fashion', 'formal', 'fragrance-free', 'gadgets', 'makeup', 'organic', 'portable', 'skincare', 'smart', 'unisex', 'wireless'];
   const paymentMethods = ['Credit Card', 'Debit Card', 'Cash', 'Online Payment'];
 
   // Fetch data using the custom hook - backend handles ALL filtering, sorting, and pagination
